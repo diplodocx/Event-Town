@@ -1,1 +1,8 @@
 .idea
+/FastAPIServer/.idea
+/FastAPIServer/.env
+/FastAPIServer/src/auth/__pycache__
+/FastAPIServer/__pycache__
+/FastAPIServer/alembic/versions/__pycache__
+/FastAPIServer/alembic/__pycache__
+
