@@ -22,7 +22,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('title', sa.String(length=200), nullable=False),
     sa.Column('description', sa.String(length=2048), nullable=False),
-    sa.Column('task_deadline', sa.TIMESTAMP(), nullable=False),
+    sa.Column('date', sa.TIMESTAMP(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('title')
     )
