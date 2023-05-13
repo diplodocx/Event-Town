@@ -6,15 +6,15 @@ from database import get_async_session
 from .schemas import EventGet, EventPost
 from . import queries
 
-manager = APIRouter(
+events = APIRouter(
     prefix="/events",
     tags=['events']
 )
 
-@manager.post("/event")
+@events.post("/event")
 async def post_event(event: EventPost, session: AsyncSession = Depends(get_async_session)):
-    return queries.create_event()
+    return await queries.create_event(event, session)
 
-@manager.get("/event", response_model=List[EventGet])
+@events.get("/event", response_model=List[EventGet])
 async def get_events(session: AsyncSession = Depends(get_async_session)):
     return
