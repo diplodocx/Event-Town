@@ -17,10 +17,22 @@ async def create_event(data, session: AsyncSession):
         raise HTTPException(status_code=400, detail="Event with this title already exists")
 
 
-async def read_events(session: AsyncSession):
+async def read_events(per_page, page, session: AsyncSession):
+    if not 0 < per_page < 100:
+        raise HTTPException(status_code=400, detail="You must set value for per_page between 1 and 100")
+    if page < 1:
+        raise HTTPException(status_code=400, detail="Page number must be greater then 0")
     stmt = db.select(event)
     res = await session.execute(stmt)
-    return res.mappings().fetchall()
+    all_elements = res.mappings().fetchall()
+    end_index = page*per_page
+    bound = len(all_elements)
+    if end_index < bound:
+        return all_elements[end_index-per_page:end_index]
+    elif end_index < bound+per_page:
+        return all_elements[-(bound+per_page-end_index):]
+    else:
+        return []
 
 
 async def read_event(event_id, session: AsyncSession):

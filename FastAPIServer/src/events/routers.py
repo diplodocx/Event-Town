@@ -1,5 +1,4 @@
-from typing import List
-
+from typing import List, Optional
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from database import get_async_session
@@ -17,11 +16,9 @@ async def post_event(event: EventPost, session: AsyncSession = Depends(get_async
     return await queries.create_event(event, session)
 
 
-# TODO: пагинация в get_events
-
 @events.get("/event", response_model=List[EventGet])
-async def get_events(session: AsyncSession = Depends(get_async_session)):
-    return await queries.read_events(session)
+async def get_events(per_page: int = 20, page: int = 1, session: AsyncSession = Depends(get_async_session)):
+    return await queries.read_events(per_page, page, session)
 
 
 @events.get("/event/{event_id}", response_model=EventGet)
