@@ -25,3 +25,14 @@ async def read_event(event_id, session: AsyncSession):
         raise HTTPException(status_code=404, detail="Item not found")
     return element
 
+
+async def delete_event(event_id, session: AsyncSession):
+    stmt = db.select(event).where(event.c.id == event_id)
+    res = await session.execute(stmt)
+    element = res.fetchone()
+    if not element:
+        raise HTTPException(status_code=404, detail="Item not found")
+    stmt = event.delete().where(event.c.id == event_id)
+    await session.execute(stmt)
+    await session.commit()
+    return {"detail": "done"}

@@ -25,3 +25,8 @@ async def get_events(session: AsyncSession = Depends(get_async_session)):
 @events.get("/event/{event_id}", response_model=EventGet)
 async def retrieve_event(event_id: int, session: AsyncSession = Depends(get_async_session)):
     return await queries.read_event(event_id, session)
+
+
+@events.delete("/events/{event_id}")
+async def delete_event(event_id: int, session: AsyncSession = Depends(get_async_session)):
+    return await queries.delete_event(event_id, session)
