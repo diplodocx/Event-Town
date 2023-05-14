@@ -4,7 +4,10 @@ from pydantic import BaseModel
 
 
 class EventGet(BaseModel):
-    pass
+    id: int
+    title: str
+    description: str
+    date: datetime
 
 
 class EventPost(BaseModel):
