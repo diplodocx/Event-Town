@@ -6,3 +6,4 @@
 /FastAPIServer/alembic/versions/__pycache__
 /FastAPIServer/alembic/__pycache__
 /FastAPIServer/src/events/__pycache__
+/FastAPIServer/src/messages/__pycache__

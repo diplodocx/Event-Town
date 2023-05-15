@@ -16,6 +16,7 @@ greenlet = "^2.0.2"
 pyscopg2 = "^66.0.2"
 celery = "^5.2.7"
 flower = "^1.2.0"
+psycopg2 = "^2.9.6"
 
 
 [build-system]
