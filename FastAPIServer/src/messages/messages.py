@@ -28,9 +28,8 @@ def make_template(event, session: Session):
 
 
 @celery.task()
-def send_report(event, session: Session = next(get_session())):
-    print("made")
-    # msg = make_template(event, session)
-    # with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
-    #     server.login(SMTP_USER, SMTP_PASSWORD)
-    #     server.send_message(msg)
+def send_messages(event, session: Session = next(get_session())):
+    msg = make_template(event, session)
+    with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
+        server.login(SMTP_USER, SMTP_PASSWORD)
+        server.send_message(msg)

@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from database import get_async_session
 from .schemas import EventGet, EventPost
 from . import queries
+from src.messages.messages import send_messages
 
 events = APIRouter(
     prefix="/events",
@@ -13,6 +14,7 @@ events = APIRouter(
 
 @events.post("/event")
 async def post_event(event: EventPost, session: AsyncSession = Depends(get_async_session)):
+    # send_messages.delay(event.dict())
     return await queries.create_event(event, session)
 
 
