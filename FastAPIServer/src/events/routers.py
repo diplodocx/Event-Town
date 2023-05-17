@@ -24,7 +24,7 @@ events = APIRouter(
 @events.post("/event")
 async def post_event(event: EventPost, session: AsyncSession = Depends(get_async_session),
                      user: User = Depends(fastapi_users.current_user(superuser=True))):
-    # send_messages.delay(event.dict())
+    send_messages.delay(event.dict())
     return await queries.create_event(event, session)
 
 

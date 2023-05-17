@@ -13,15 +13,14 @@ SMTP_PORT = 465
 
 
 def make_text_body(event):
-    event_data = event.dict()
     return ""
 
 
-def make_template(event, session: Session):
+def make_template(event, recipient, session: Session):
     msg = MIMEMultipart()
     msg['Subject'] = 'Новое мероприятие в городе'
     msg['From'] = SMTP_USER
-    msg['To'] = queries.read_users(session)
+    msg['To'] = recipient
     body = make_text_body(event)
     msg.attach(MIMEText(body, 'plain'))
     return msg
@@ -29,7 +28,9 @@ def make_template(event, session: Session):
 
 @celery.task()
 def send_messages(event, session: Session = next(get_session())):
-    msg = make_template(event, session)
+    recipients = queries.read_users(session)
     with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
         server.login(SMTP_USER, SMTP_PASSWORD)
-        server.send_message(msg)
+        for recipient in recipients:
+            msg = make_template(event, recipient, session)
+            server.send_message(msg)
