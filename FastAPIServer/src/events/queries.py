@@ -65,4 +65,5 @@ async def update_event(event_id, data, session: AsyncSession):
     else:
         stmt = db.update(event).where(event.c.id == event_id).values(**data.dict())
         await session.execute(stmt)
+        await session.commit()
         return JSONResponse(content={"detail": "done"}, status_code=200)
