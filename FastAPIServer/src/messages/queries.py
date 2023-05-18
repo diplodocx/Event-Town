@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
 import sqlalchemy as db
-
-from src.auth.models import user
+from auth.models import user
 
 
 def read_users(session: Session):

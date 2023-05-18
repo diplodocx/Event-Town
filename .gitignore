@@ -7,3 +7,6 @@
 /FastAPIServer/alembic/__pycache__
 /FastAPIServer/src/events/__pycache__
 /FastAPIServer/src/messages/__pycache__
+/FastAPIServer/test.db
+/FastAPIServer/tests/__pycache__
+/FastAPIServer/src/__pycache__

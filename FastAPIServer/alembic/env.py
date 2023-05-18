@@ -4,8 +4,8 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from src.auth.models import metadata as auth_metadata
-from src.events.models import metadata as events_metadata
+from auth.models import metadata as auth_metadata
+from events.models import metadata as events_metadata
 
 from config import DB_NAME, DB_HOST, DB_PASS, DB_PORT, DB_USER
 

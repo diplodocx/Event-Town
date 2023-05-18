@@ -1,6 +1,4 @@
 import sqlalchemy as db
-from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
-from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped
 
 metadata = db.MetaData()
 

@@ -1,14 +1,14 @@
-from typing import List, Optional
+from typing import List
 from fastapi import APIRouter, Depends
 from fastapi_users import FastAPIUsers
 from sqlalchemy.ext.asyncio import AsyncSession
 from database import get_async_session
 from .schemas import EventGet, EventPost
 from . import queries
-from src.messages.messages import send_messages
-from ..auth.auth import auth_backend
-from ..auth.manager import get_user_manager
-from ..auth.models import User
+from messages.messages import send_messages
+from auth.auth import auth_backend
+from auth.manager import get_user_manager
+from auth.models import User
 
 fastapi_users = FastAPIUsers[User, int](
     get_user_manager,

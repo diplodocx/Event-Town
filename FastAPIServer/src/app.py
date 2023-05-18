@@ -1,10 +1,9 @@
 from fastapi import FastAPI, Depends
 
-from src.auth.auth import auth_backend
-from src.auth.routers import fastapi_users
-from src.auth.schemas import UserRead, UserCreate
-
-from src.events.routers import events
+from auth.auth import auth_backend
+from auth.routers import fastapi_users
+from auth.schemas import UserRead, UserCreate
+from events.routers import events
 
 #
 # from src.auth.auth import auth_backend
