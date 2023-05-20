@@ -10,3 +10,4 @@
 /FastAPIServer/test.db
 /FastAPIServer/tests/__pycache__
 /FastAPIServer/src/__pycache__
+/FastAPIServer/.pytest_cache
