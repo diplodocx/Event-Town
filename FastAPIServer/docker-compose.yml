@@ -1,0 +1,12 @@
+version: "3"
+services:
+  eventtown_app:
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    env_file:
+      - .env
+    ports:
+      - "8030:8030"
+    environment:
+      - PYTHONPATH=./src
