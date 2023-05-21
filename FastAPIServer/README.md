@@ -6,8 +6,8 @@
 
 Для получения доступа к эндпоинтам, нужно сначала отправить запрос на /auth/register c телом, в котором указаны email и password (а также поля is_verified, is_active, is_superuser, is_recipient), потом отправить данные логина и пароля на адрес /auth/login. Для отправки данных при входе в систему необходимо указать заголовки 
 ```
-		'accept': 'application/json',
-		'Content-Type': 'application/x-www-form-urlencoded'
+'accept': 'application/json',
+'Content-Type': 'application/x-www-form-urlencoded'
 ```
 
 Тело запроса должно иметь вид:
