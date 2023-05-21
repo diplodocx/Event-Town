@@ -12,44 +12,44 @@
 
 Тело запроса должно иметь вид:
 ```
-		'grant_type': "",
-        	'username': 'test@test.com',
-        	'password': 'test',
-        	'scope': "",
-        	'client_id': "",
-        	'client_secret': ""
+'grant_type': "",
+'username': 'test@test.com',
+'password': 'test',
+'scope': "",
+'client_id': "",
+'client_secret': ""
 ```
 
 В ответ вернется jwt-token, который необходимо прикреплять в заголовках запроса:
 ```
-		'Authorization': 'Bearer <your jwt-token>'
+'Authorization': 'Bearer <your jwt-token>'
 ```
 
 # Запуск приложения
 Для запуска приложения необходимо сначала установить poetry и запустить виртуальное окружение. Установить необходимые зависимости можно командой 
-		poetry install
+poetry install
 из каталога FastAPIServer.
 
 Чтобы установить переменные окружения создайте файл .env вида
 ```
-		DB_USER=
-		DB_PASS=
-		DB_HOST=
-		DB_PORT=
-		DB_NAME=
-		AUTH_SECRET=
-		SMTP_USER=
-		SMTP_PASSWORD=
-		RABBIT_USER=
-		RABBIT_PASS=
+DB_USER=*
+DB_PASS=*
+DB_HOST=*
+DB_PORT=*
+DB_NAME=*
+AUTH_SECRET=*
+SMTP_USER=*
+SMTP_PASSWORD=*
+RABBIT_USER=*
+RABBIT_PASS=*
 ```
 заполнив его своими значениями.		
 
 Само приложение можно запустить командами
 ```
-		poetry run uvicorn src.app:app
-		poetry run celery src.celery_app:celery worker --loglevel=INFO
-		poetry run celery src.celery_app:celery flower
+poetry run uvicorn src.app:app
+poetry run celery src.celery_app:celery worker --loglevel=INFO
+poetry run celery src.celery_app:celery flower
 ```
 находясь в каталоге FastAPIServer. 
 
@@ -57,20 +57,20 @@
 
 Также из папки FastAPIServer можно запустить приложение в Docker командой
 ```
-		docker-compose up
+docker-compose up
 ```
 
 # Тестирование
 Запустить существующие тесты можно командой 
 ```
-		poetry pytest
+poetry pytest
 ```
 Для тестирования применяется локальная тестовая база данных SQLite и библиотека pytest.
 
 # Миграции 
 Для миграции данных в данном приложении используется alembic. Выполнить миграции можно из корневой папки (FastAPIServer) командой
 ```
-		poetry run alembic uprgade head
+poetry run alembic uprgade head
 ```
 		
 # Обращение к API
