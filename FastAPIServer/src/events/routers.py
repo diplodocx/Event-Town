@@ -5,6 +5,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from database import get_async_session
 from .schemas import EventGet, EventPost
 from . import queries
+import messages
+import messages.messages
 from messages.messages import send_messages
 from auth.auth import auth_backend
 from auth.manager import get_user_manager
