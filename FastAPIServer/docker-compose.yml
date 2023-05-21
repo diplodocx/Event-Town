@@ -10,3 +10,24 @@ services:
       - "8030:8030"
     environment:
       - PYTHONPATH=./src
+
+  eventtown_celery_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile-worker
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=./src
+
+  eventtown_celery_flower:
+    build:
+      context: .
+      dockerfile: Dockerfile-flower
+    env_file:
+      - .env
+    ports:
+      -  8031:5555
+    environment:
+      - PYTHONPATH=./src
+

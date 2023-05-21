@@ -1,0 +1,18 @@
+FROM python:3.10
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir celery flower
+
+RUN pip install --no-cache-dir poetry
+
+WORKDIR /app
+COPY . .
+
+RUN poetry install --no-dev
+
+EXPOSE 5555
+
+CMD ["poetry", "run", "celery", "-A", "src.messages.messages:celery", "flower"]
