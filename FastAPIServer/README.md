@@ -12,12 +12,14 @@
 
 Тело запроса должно иметь вид:
 ```
-'grant_type': "",
-'username': 'test@test.com',
-'password': 'test',
-'scope': "",
-'client_id': "",
-'client_secret': ""
+{
+	'grant_type': "",
+	'username': 'test@test.com',
+	'password': 'test',
+	'scope': "",
+	'client_id': "",
+	'client_secret': ""
+}
 ```
 
 В ответ вернется jwt-token, который необходимо прикреплять в заголовках запроса:
